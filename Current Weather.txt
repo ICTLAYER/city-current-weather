@@ -1,0 +1,16 @@
+<?php
+
+$city = 'Dhaka';  //Write City Name  
+$country='BD';   //Write Country Name
+
+$request = 'https://api.openweathermap.org/data/2.5/weather?q='.$city.','.$country.'&APPID=***Write Your API ID***';
+
+$response  = file_get_contents($request);
+$jsonobj  = json_decode($response);
+$kelvin = $jsonobj->main->temp;  //Main temperature is in kalvin
+
+$celcius = $kelvin - 273.15;  //Calculate celcius temperature 
+
+echo $celcius  //Print temperature in celcius
+
+?>
